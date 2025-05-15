@@ -14,7 +14,7 @@ def main():
     requested_path = os.path.abspath(os.path.join(SAFE_BASE_DIR, sys.argv[1]))
 
     # Check if the resolved path is still inside the safe base directory
-    if not requested_path.startswith(SAFE_BASE_DIR):
+    if not os.path.commonprefix([requested_path, SAFE_BASE_DIR]) == SAFE_BASE_DIR:
         print("Error: Invalid file path.")
         sys.exit(1)
 
